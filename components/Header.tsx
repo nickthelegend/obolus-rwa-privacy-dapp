@@ -17,18 +17,17 @@ export const Header = ({ transparent = false }: { transparent?: boolean }) => {
     <header className={`flex items-center justify-between py-6 max-w-[1400px] mx-auto z-50 relative ${transparent ? "" : "px-6 lg:px-20"}`}>
       <Logo />
       <nav className="hidden md:flex items-center gap-8 font-bold text-[10px] tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity">
+        <Link href="/about" className="hover:text-primary transition-colors">About</Link>
         <Link href="/whitepaper" className="hover:text-primary transition-colors">Whitepaper</Link>
-        <Link href="/docs" className="hover:text-primary transition-colors">Documentation</Link>
-        <Link href="/gov" className="hover:text-primary transition-colors">Governance</Link>
-        <Link href="/status" className="hover:text-primary transition-colors">Vault Stats</Link>
         <Link href="/community" className="hover:text-primary transition-colors">Community</Link>
+        <Link href="/status" className="hover:text-primary transition-colors">Status</Link>
       </nav>
-      <a
+      <Link
         href="https://app.obolus.network"
         className="bg-black text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-full hover:bg-neutral-800 transition-colors"
       >
-        Launch Vault
-      </a>
+        Launch App
+      </Link>
     </header>
   );
 };
