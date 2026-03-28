@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
+
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -12,38 +15,12 @@ const fadeInUp = {
   transition: { duration: 0.6 }
 };
 
-const Logo = () => (
-  <div className="flex items-center gap-2 font-black text-2xl tracking-tighter">
-    <div className="w-6 h-6 bg-black rounded-sm flex items-center justify-center text-[#ccff00] text-xs">
-      <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z" /></svg>
-    </div>
-    Obolus
-  </div>
-);
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-primary selection:text-black">
       {/* HERO SECTION - Neon Lime Background */}
       <div className="bg-[#ccff00] text-black w-full rounded-b-[3rem] lg:rounded-b-[4rem] px-6 lg:px-20 pb-20 relative overflow-hidden">
-
-        {/* Header */}
-        <header className="flex items-center justify-between py-6 max-w-[1400px] mx-auto z-10 relative">
-          <Logo />
-          <nav className="hidden md:flex items-center gap-8 font-bold text-[10px] tracking-widest uppercase text-black/60">
-            <Link href="#" className="hover:text-black transition-colors">Whitepaper</Link>
-            <Link href="#" className="hover:text-black transition-colors">Documentation</Link>
-            <Link href="#" className="hover:text-black transition-colors">Governance</Link>
-            <Link href="#" className="hover:text-black transition-colors">Vault Stats</Link>
-            <Link href="#" className="hover:text-black transition-colors">Community</Link>
-          </nav>
-          <a
-            href="https://app.obolus.network"
-            className="bg-black text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-full hover:bg-neutral-800 transition-colors"
-          >
-            Launch Vault
-          </a>
-        </header>
+        <Header transparent={true} />
 
         {/* Hero Content */}
         <div className="max-w-[1400px] mx-auto mt-20 lg:mt-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10 relative">
@@ -323,14 +300,7 @@ export default function Home() {
 
       </main>
 
-      <footer className="border-t border-white/5 py-12 px-6 lg:px-20 max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-        <Logo />
-        <div className="flex gap-4 text-[10px] text-white/40 uppercase tracking-widest font-bold">
-          <span>© 2026 OBOLUS CONFIDENTIAL VAULT</span>
-          <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-          <Link href="/docs" className="hover:text-white transition-colors">Documentation</Link>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

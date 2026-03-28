@@ -4,47 +4,26 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+
 const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 }
 };
 
-const Logo = ({ className = "" }: { className?: string }) => (
-    <div className={`relative w-8 h-8 ${className}`}>
-        <Image
-            src="/obolus.png"
-            alt="Obolus Logo"
-            fill
-            className="object-contain"
-            priority
-        />
-    </div>
-);
-
 export default function Docs() {
     const categories = [
-        { title: "Introduction", items: ["What is Obolus?", "Architecture", "Monad Integration"] },
-        { title: "Payments", items: ["Merchant SDK", "Stablecoin Support", "Settlement Logic"] },
-        { title: "Credit", items: ["BNPL Protocol", "Risk Models", "Liquidity Pools"] },
-        { title: "Smart Contracts", items: ["Solidity", "EVM Implementation", "Audits"] },
+        { title: "Introduction", items: ["Vision", "Architecture", "fhEVM Basics"] },
+        { title: "Vaults", items: ["Deposits", "Encrypted Balances", "Withdrawal Logic"] },
+        { title: "Privacy", items: ["Reclaim Protocol", "ZK-KYC", "Private Solvency"] },
+        { title: "Governance", items: ["Obolus DAO", "Vault Fees", "Incentives"] },
     ];
 
     return (
-        <div className="min-h-screen bg-background-dark text-white font-display">
-            <header className="fixed top-0 z-[60] w-full border-b border-solid border-slate-200/10 dark:border-border-dark/50 bg-background-dark/40 backdrop-blur-xl px-6 lg:px-40 py-4">
-                <div className="flex items-center justify-between max-w-[1400px] mx-auto">
-                    <a href="/" className="flex items-center gap-2">
-                        <Logo />
-                        <h2 className="text-lg font-bold tracking-tight">Obolus Docs</h2>
-                    </a>
-                    <nav className="hidden md:flex items-center gap-8 text-xs font-medium text-slate-400">
-                        <a href="/" className="hover:text-primary transition-colors">Home</a>
-                        <a href="/about" className="hover:text-primary transition-colors">About</a>
-                        <a href="/privacy" className="hover:text-primary transition-colors">Privacy</a>
-                    </nav>
-                </div>
-            </header>
+        <div className="min-h-screen bg-black text-white font-sans selection:bg-[#ccff00] selection:text-black">
+            <Header />
 
             <div className="pt-24 flex min-h-screen">
                 {/* Sidebar */}
@@ -52,11 +31,11 @@ export default function Docs() {
                     <div className="space-y-10">
                         {categories.map((cat, i) => (
                             <div key={i}>
-                                <h4 className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-4">{cat.title}</h4>
+                                <h4 className="text-[10px] uppercase tracking-widest text-white/20 font-bold mb-4">{cat.title}</h4>
                                 <ul className="space-y-3">
                                     {cat.items.map((item, j) => (
                                         <li key={j}>
-                                            <a href="#" className="text-sm text-slate-400 hover:text-primary transition-colors">{item}</a>
+                                            <a href="#" className="text-sm text-white/40 hover:text-[#ccff00] transition-colors font-medium">{item}</a>
                                         </li>
                                     ))}
                                 </ul>
@@ -68,44 +47,48 @@ export default function Docs() {
                 {/* Content */}
                 <main className="flex-1 lg:ml-72 p-10 lg:p-20 overflow-y-auto">
                     <motion.div {...fadeInUp} className="max-w-3xl">
-                        <h1 className="text-4xl lg:text-6xl font-black mb-6">Documentation</h1>
-                        <p className="text-slate-400 text-lg leading-relaxed mb-12">
-                            Welcome to the Obolus Network technical documentation. Here you'll find everything you
-                            need to integrate decentralized payments and credit rails into your applications.
+                        <h1 className="text-4xl lg:text-7xl font-black mb-6 uppercase tracking-tighter">Documentation</h1>
+                        <p className="text-white/60 text-lg leading-relaxed mb-12 font-medium">
+                            Welcome to the Obolus Vault technical documentation. Here you'll find everything you
+                            need to integrate privacy-preserving equity vaults and fhEVM integration.
                         </p>
 
                         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
                             {[
-                                { title: "Quickstart", desc: "Get up and running in minutes.", icon: "bolt" },
-                                { title: "API Reference", desc: "Detailed endpoint documentation.", icon: "api" },
-                                { title: "SDKs", desc: "Libraries for JavaScript, Rust, and Solidity.", icon: "terminal" },
-                                { title: "Community", desc: "Join our developer discord.", icon: "forum" }
+                                { title: "fhEVM Guide", desc: "Understanding encrypted state.", icon: "shield" },
+                                { title: "Ondo Assets", desc: "GM tokenized stock specs.", icon: "trending_up" },
+                                { title: "ZK-Identity", desc: "Reclaim Protocol integration.", icon: "fingerprint" },
+                                { title: "Vault API", desc: "REST and GraphQL endpoints.", icon: "terminal" }
                             ].map((card, i) => (
-                                <div key={i} className="p-8 rounded-2xl bg-card-dark border border-white/5 hover:border-primary/20 transition-all cursor-pointer group">
-                                    <span className="material-symbols-outlined text-primary text-3xl mb-4 group-hover:scale-110 transition-transform">{card.icon}</span>
-                                    <h3 className="text-xl font-bold mb-2">{card.title}</h3>
-                                    <p className="text-xs text-slate-500">{card.desc}</p>
+                                <div key={i} className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-[#ccff00]/40 transition-all cursor-pointer group">
+                                    <span className="material-symbols-outlined text-[#ccff00] text-3xl mb-4 group-hover:scale-110 transition-transform">{card.icon}</span>
+                                    <h3 className="text-xl font-bold mb-2 uppercase tracking-tight">{card.title}</h3>
+                                    <p className="text-xs text-white/40 font-medium">{card.desc}</p>
                                 </div>
                             ))}
                         </section>
 
-                        <article className="prose prose-invert max-w-none text-slate-400">
-                            <h2 className="text-white text-3xl font-bold mb-6">High Performance Infrastructure</h2>
-                            <p className="mb-6">
-                                Obolus is built from the ground up to leverage Monad's parallel execution model.
-                                Our infrastructure is designed for extreme throughput and predictable transaction costs.
+                        <article className="prose prose-invert max-w-none text-white/60">
+                            <h2 className="text-white text-3xl font-black mb-6 uppercase tracking-tight">Institutional Privacy</h2>
+                            <p className="mb-6 font-medium leading-relaxed">
+                                Obolus is built to leverage Fully Homomorphic Encryption (fhEVM) on BNB Chain.
+                                Our infrastructure is designed for high-throughput encrypted computations, ensuring 
+                                liquidations and entry prices remain hidden from prying eyes.
                             </p>
-                            <div className="bg-slate-900 rounded-xl p-6 font-mono text-sm border border-white/5 mb-8">
-                                <span className="text-primary font-bold">// Initialize Obolus SDK</span><br />
-                                const obolus = new ObolusNetwork(&#123;<br />
-                                &nbsp;&nbsp;network: 'mainnet',<br />
-                                &nbsp;&nbsp;apiKey: process.env.OBOLUS_KEY<br />
-                                &#125;);
+                            <div className="bg-white/5 rounded-3xl p-8 font-mono text-sm border border-white/10 mb-8 overflow-hidden relative">
+                                <span className="text-[#ccff00]/60 font-bold italic">// Initialize Obolus Vault SDK</span><br />
+                                <span className="text-white">const vault = new ObolusVault(&#123;</span><br />
+                                &nbsp;&nbsp;<span className="text-white">network: 'bnb-mainnet',</span><br />
+                                &nbsp;&nbsp;<span className="text-white">encryption: 'fhEVM',</span><br />
+                                &nbsp;&nbsp;<span className="text-white">apiKey: process.env.OBOLUS_VAULT_KEY</span><br />
+                                <span className="text-white">&#125;);</span>
+                                <div className="absolute right-[-20%] bottom-[-20%] text-white/[0.02] text-[150px] font-black pointer-events-none italic uppercase">fhEVM</div>
                             </div>
                         </article>
                     </motion.div>
                 </main>
             </div>
+            <Footer />
         </div>
     );
 }
