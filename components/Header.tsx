@@ -18,7 +18,7 @@ export const Header = ({ transparent = false }: { transparent?: boolean }) => {
       <Logo />
       <nav className="hidden md:flex items-center gap-8 font-bold text-[10px] tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity">
         <Link href="/about" className="hover:text-primary transition-colors">About</Link>
-        <Link href="/whitepaper" className="hover:text-primary transition-colors">Whitepaper</Link>
+        <Link href="https://docs.obolus.network" target="_blank" className="hover:text-primary transition-colors">Documentation</Link>
         <Link href="/community" className="hover:text-primary transition-colors">Community</Link>
         <Link href="/status" className="hover:text-primary transition-colors">Status</Link>
       </nav>

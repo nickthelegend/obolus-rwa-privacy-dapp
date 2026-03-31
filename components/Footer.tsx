@@ -16,7 +16,7 @@ export const Footer = () => (
             
             <div className="flex flex-wrap justify-center gap-8 text-[10px] text-white/40 uppercase tracking-widest font-bold">
                 <Link href="/about" className="hover:text-white transition-colors">About</Link>
-                <Link href="/whitepaper" className="hover:text-white transition-colors">Whitepaper</Link>
+                <Link href="https://docs.obolus.network" target="_blank" className="hover:text-white transition-colors">Documentation</Link>
                 <Link href="/community" className="hover:text-white transition-colors">Community</Link>
                 <Link href="/status" className="hover:text-white transition-colors">Status</Link>
                 <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>

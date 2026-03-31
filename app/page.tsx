@@ -44,7 +44,8 @@ export default function Home() {
                 Launch Vault
               </Link>
               <Link
-                href="#"
+                href="https://docs.obolus.network"
+                target="_blank"
                 className="inline-block border-2 border-black text-black font-bold text-xs uppercase tracking-wider px-8 py-4 rounded-full hover:bg-black hover:text-[#ccff00] transition-all"
               >
                 View Documentation
